@@ -16,7 +16,6 @@ const addCourse= async (req, res) => {
       blogContent,
       videoUrls
     });
-
     await course.save();
     res.status(201).json({ message: 'Course created successfully', course });
   } catch (error) {
@@ -38,6 +37,18 @@ const getCourse = async (req, res) => {
   }
 };
 
+const getAllCourse = async (req, res) => {
+  try {
+    const course = await Course.find({});
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    res.status(200).json(course);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
-    addCourse , getCourse
+    addCourse , getCourse, getAllCourse
 };

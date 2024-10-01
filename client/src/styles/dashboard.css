@@ -1,0 +1,224 @@
+.dashboard-container {
+display: flex;
+height: 100vh;
+overflow: hidden;
+background-color: #f4f7f9; /* Background color for the entire dashboard */
+font-family: 'Arial', sans-serif; /* Font style */
+color: #333; /* Default text color */
+}
+
+/* Sidebar styling */
+.sidebar {
+width: 250px;
+background-color: #fff; /* Sidebar background */
+box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: column;
+justify-content:start;
+padding: 1rem;
+transition: all 0.3s ease;
+position: relative;
+z-index: 1000; /* Ensure sidebar is above other content */
+}
+
+/* Logo container */
+.sidebar-logo {
+display: flex;
+justify-content: center;
+}
+
+/* Sidebar menu list */
+.sidebar-menu {
+list-style: none;
+line-height: 30px;
+padding: 0;
+margin: 0;
+}
+
+.sidebar-menu li {
+padding: 0.75rem 1rem;
+cursor: pointer;
+border-radius: 4px;
+margin-top: 1rem;
+margin-bottom: 1rem;
+transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-menu a {
+text-decoration: none; /* Remove underline from links */
+color: inherit; /* Ensure the link text color inherits from its parent */
+display: block; /* Make links fill their parent li */
+padding: 10px; /* Optional: Adjust padding for better spacing */
+}
+
+.sidebar-menu li:hover {
+background-color: #e0e7ff; /* Hover background color */
+color: #1d4ed8; /* Hover text color */
+}
+
+/* Active tab style */
+.sidebar-menu .active-tab {
+background-color: #6d90f7; /* Active tab background color */
+color: #fff; /* Active tab text color */
+font-weight: bold;
+}
+
+/* Divider line between menu and logout button */
+.sidebar hr {
+border: none;
+height: 1px;
+background-color: #e5e7eb;
+margin: 1rem 0;
+}
+
+/* Logout button styling */
+.logout-button {
+padding: 0.75rem 1rem;
+background-color: #ef4444; /* Logout button background color */
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+background-color: #dc2626; /* Darker red on hover */
+}
+
+/* Main content styling */
+.main-content {
+flex: 1;
+padding: 2rem;
+overflow-y: auto;
+/* background-image:url('../images/background.svg'); */
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+/* Dashboard header */
+.dashboard-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 2rem;
+padding-bottom: 1rem;
+border-bottom: 1px solid #e5e7eb;
+}
+
+.dashboard-header h1 {
+font-size: 1.5rem;
+color: #1f2937; /* Header text color */
+}
+
+.user-info {
+font-size: 1rem;
+color: #4b5563;
+}
+
+
+/* Responsive styling */
+@media (max-width: 768px) {
+.dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.user-info {
+    margin-top: 0.5rem;
+}
+
+.sidebar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    overflow-x: auto;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    display: none;
+}
+
+.sidebar-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.sidebar-menu li {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+}
+
+.logout-button {
+    display: none;
+}
+
+.main-content {
+    
+    padding: 1rem;
+    padding-bottom: 3.5rem; /* Space for the fixed sidebar */
+}
+}
+
+@media (max-width: 480px) {
+.dashboard-metrics {
+    grid-template-columns: 1fr;
+}
+
+.dashboard-charts {
+    grid-template-columns: 1fr;
+}
+
+.metric-card, .chart-card {
+    margin-bottom: 1rem;
+}
+}
+.dashboard_card{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+gap: 1rem;
+}
+
+.dashboard_card p{
+color: #dc2626;
+font-weight: 1000;
+font-size:35px;
+text-align: center;
+}
+        
+.dashboard_card .p-card-body {
+width: 100%; 
+max-width: 300px; 
+min-width: 200px; 
+height: 200px;
+/* flex: 1 1 100%;  */
+margin-bottom: 1rem; 
+transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+@media (max-width: 768px) {
+.dashboard_card.p-card-body {
+    width: 100%;
+    max-width: none; 
+}
+}
+
+@media (max-width: 480px) {
+.dashboard_card {
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.p-card-body {
+    width: 90%; 
+}
+}

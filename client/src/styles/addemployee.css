@@ -1,0 +1,59 @@
+.dashboard-container {
+    display: flex;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-product-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.add-product-card {
+    padding: 20px;
+}
+
+.form-two-columns {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+.form-column {
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 400px; 
+}
+
+.p-field {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.p-field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-info {
+    font-size: 1rem;
+    color: #555;
+}
+
+@media screen and (max-width: 768px) {
+    .form-two-columns {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+    }
+}

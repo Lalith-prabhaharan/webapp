@@ -1,0 +1,31 @@
+.custom-card-overlay {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 2;
+}
+
+::placeholder {
+    font-size: 13px;
+}
+
+.custom-card {
+    z-index: 2; 
+    width: 450px;
+    color: #210a45;
+    background-color: #d0ebfde5;
+    padding: 20px; 
+    border-radius: 20px; 
+    font-weight: bold;
+    height: 600px;
+}
+
+.low-quantity-row {
+    background-color: #f5cdcd; /* Light red background */
+}

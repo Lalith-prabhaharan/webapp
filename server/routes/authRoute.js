@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, loginUser, getCurrentUser } = require('../controller/auth.js');
+const { registerUser, loginUser, getCurrentUser,getAllUsers, deleteUser, updateUser } = require('../controller/auth.js');
 const { authenticate } = require('../middleware/authMiddleware');
 
 const router = express.Router();
@@ -10,7 +10,10 @@ router.post('/register', registerUser);
 // User login route
 router.post('/login', loginUser);
 
-// Route to get current user (for dashboard access)
-// router.get('/me', authenticate, getCurrentUser);
+router.get('/all', getAllUsers);
+
+router.delete('/user/:id',deleteUser);
+
+router.patch('/user/:id',updateUser);
 
 module.exports = router;

@@ -1,0 +1,97 @@
+/* Base Card Container */
+/* .course_card {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+} */
+
+/* Card Specific Styles */
+.course_card .p-card {
+    width: 100%;
+    max-width: 25rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Header (Image) Styling */
+.course_card .p-card-header img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 2px solid #efefef;
+}
+
+/* Title and Subtitle Styling */
+.course_card .p-card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.course_card .p-card-subtitle {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+/* Content (Paragraph) Styling */
+.course_card .p-card-content p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+/* Footer Buttons Styling */
+.course_card .p-card-footer button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.course_card .p-card-footer button:first-child {
+    background-color: #4caf50;
+    color: white;
+    margin-right: 0.5rem;
+}
+
+.course_card .p-card-footer button:first-child:hover {
+    background-color: #45a045;
+}
+
+.course_card .p-card-footer button:last-child {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.course_card .p-card-footer button:last-child:hover {
+    background-color: #d5d5d5;
+}
+
+/* Layout: Center alignment for responsiveness */
+.course_card .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.course_card .m-0 {
+    margin: 0;
+}
+
+/* Breakpoints for responsiveness */
+@media (max-width: 768px) {
+    .course_card .p-card {
+        max-width: 100%;
+    }
+}

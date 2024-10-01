@@ -5,6 +5,14 @@ import { BrowserRouter as Router, Route, Switch, Link, BrowserRouter, Routes } f
 // import LearningMaterial from './Components/User/LearningMaterial';
 // import AdminDashboard from './Components/Admin';
 import { Login } from './Components/User/Login';
+import { Sidebar } from './Components/User/Sidebar';
+import { Dashboard } from './Components/User/Dashboard';
+import { NavBar } from './Components/User/NavBar';
+import { Course } from './Components/User/Course';
+import { AddEmployee } from './Components/Admin/AddEmployee';
+import { EmployeeList } from './Components/Admin/EmployeeList';
+import { Employees } from './Components/Admin/Employees';
+import { AddCourse } from './Components/Admin/AddCourse';
 
 function App() {
     return (
@@ -22,6 +30,7 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>}> </Route>
+          <Route path='/dashboard' element={<Dashboard/>}> </Route>
           
         </Routes>
         </BrowserRouter>
