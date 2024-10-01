@@ -1,0 +1,92 @@
+/* Main container for sidebar and quiz form */
+.main-container {
+    display: flex;              /* Enable flexbox layout */
+    height: 100vh;             /* Full height of the viewport */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;              /* Fixed width for sidebar */
+    background-color: #f4f4f4; /* Background color for visibility */
+    padding: 20px;             /* Padding inside the sidebar */
+}
+
+/* Quiz form container */
+.quiz-form-container {
+    flex: 1;                   /* Take up the remaining space */
+    padding: 20px;             /* Padding around the form */
+    overflow-y: auto;          /* Scrollable if content overflows */
+}
+
+/* Quiz form styles */
+.quiz-form {
+    display: flex;
+    flex-direction: column;    /* Arrange questions vertically */
+}
+
+/* Each question in the quiz */
+.quiz-question {
+    margin-bottom: 15px;       /* Space between questions */
+}
+
+/* Title styles for questions */
+.question-title {
+    margin: 0;                 /* Remove default margin */
+}
+
+/* Input styles */
+.question-input,
+.option-input,
+.answer-input {
+    width: 50%;                /* Shortened width for inputs */
+    margin-right: 2%;
+    max-width: 300px;          /* Max width for larger screens */
+    padding: 10px;             /* Padding for inputs */
+    margin-top: 5px;           /* Space above inputs */
+    border: 1px solid #ccc;    /* Border for inputs */
+    border-radius: 4px;        /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Button styles */
+.delete-question-button,
+.add-question-button,
+.create-quiz-button {
+    margin-top: 10px;          /* Space above buttons */
+    padding: 10px 20px;        /* Padding for buttons */
+    border: none;              /* Remove default border */
+    border-radius: 4px;        /* Rounded corners */
+    cursor: pointer;            /* Pointer cursor on hover */
+    font-weight: bold;          /* Bold text for buttons */
+}
+
+/* Specific styles for buttons */
+.delete-question-button {
+    background-color: #e74c3c; /* Red for delete button */
+    color: white;               /* White text */
+}
+
+.add-question-button,
+.create-quiz-button {
+    width: 20%;
+    background-color: #3498db; /* Blue for add and create buttons */
+    color: white;               /* White text */
+}
+
+/* Hover effects for buttons */
+.delete-question-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.add-question-button:hover,
+.create-quiz-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Additional styles for better layout */
+.quiz-form-container {
+    padding: 20px;             /* Additional padding for the form */
+    background-color: #f9f9f9; /* Light background for the form */
+    border-radius: 8px;        /* Rounded corners for the form container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}

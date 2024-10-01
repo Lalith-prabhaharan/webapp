@@ -26,6 +26,7 @@ app.options('*',cors());
 app.use('/api/auth', require('./routes/authRoute'));
 app.use('/api/courses',require('./routes/courseRoute'))
 app.use('/api/feedback',require('./routes/feedbackRoute'))
+app.use('/api/quiz',require('./routes/quizRoute'))
 
 app.listen(8000, () => {
     connect()

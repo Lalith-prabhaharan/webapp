@@ -13,6 +13,8 @@ import { AddEmployee } from './Components/Admin/AddEmployee';
 import { EmployeeList } from './Components/Admin/EmployeeList';
 import { Employees } from './Components/Admin/Employees';
 import { AddCourse } from './Components/Admin/AddCourse';
+import QuizForm from './Components/Admin/QuizForm';
+import Quiz from './Components/User/Quiz';
 
 function App() {
     return (
@@ -30,7 +32,7 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>}> </Route>
-          <Route path='/dashboard' element={<Dashboard/>}> </Route>
+          <Route path='/dashboard' element={<Quiz/>}> </Route>
           
         </Routes>
         </BrowserRouter>
