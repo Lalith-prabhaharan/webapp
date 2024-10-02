@@ -1,44 +1,71 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import "../../styles/quizform.css"
 import { Sidebar } from '../User/Sidebar';
 const QuizForm = () => {
-    const [questions, setQuestions] = useState([
-        { questionText: '', options: ['', ''], answer: '' }
-    ]);
+    const [quiz, setQuiz] = useState({courseId: 1,
+        questions:[
+        {questionText: '', options: ['', '',''], answer: '' }
+    ]});
 
     const handleQuestionChange = (index, e) => {
         const { name, value } = e.target;
-        const updatedQuestions = [...questions];
+        const updatedQuestions = [...quiz.questions];
         updatedQuestions[index][name] = value;
-        setQuestions(updatedQuestions);
+        setQuiz((prevQuiz) => ({
+            ...prevQuiz,
+            questions: updatedQuestions,
+        }));
     };
 
     const handleOptionChange = (questionIndex, optionIndex, value) => {
-        const updatedQuestions = [...questions];
+        const updatedQuestions = [...quiz.questions];
         updatedQuestions[questionIndex].options[optionIndex] = value;
-        setQuestions(updatedQuestions);
+        setQuiz((prevQuiz) => ({
+            ...prevQuiz,
+            questions: updatedQuestions,
+        }));
     };
 
     const addQuestion = () => {
-        setQuestions([...questions, { questionText: '', options: ['', ''], answer: '' }]);
+    setQuiz((prevQuiz) => ({
+        ...prevQuiz,
+        questions: [...prevQuiz.questions, { questionText: '', options: ['', '', ''], answer: '' }],
+    }));
     };
 
     const deleteQuestion = (index) => {
-        setQuestions((prevQuestions) => prevQuestions.filter((_, i) => i !== index));
+        setQuiz((prevQuiz) => ({
+            ...prevQuiz,
+            questions: prevQuiz.questions.filter((_, i) => i !== index),
+        }));
     };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Logic to handle quiz submission
-        console.log(questions);
+    
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        console.log(quiz);
+        const response = await axios.post('http://localhost:8000/api/quiz', quiz);
+        if (response.status === 201) {
+            // Reset the form if needed
+            setQuiz({
+                courseId: 1, // Or reset to the appropriate courseId
+                questions: [{ questionText: '', options: ['', '', ''], answer: '' }]
+            });
+        } else {
+            throw new Error("Failed to create quiz");
+        }
+    } catch (error) {
+        console.error('Error creating quiz:', error);
+    }
     };
 
     return (
-        <div className="main-container">
+    <div className="main-container">
     <Sidebar />
     <div className="quiz-form-container">
         <form onSubmit={handleSubmit} className="quiz-form">
-            {questions.map((q, index) => (
+            {quiz.questions.map((q, index) => (
                 <div key={index} className="quiz-question">
                     <h4 className="question-title">Question {index + 1}</h4>
                     <input
@@ -67,7 +94,6 @@ const QuizForm = () => {
                         value={q.answer}
                         onChange={(e) => handleQuestionChange(index, e)}
                     />
-                    {/* Delete Question Button */}
                     <button
                         type="button"
                         className="delete-question-button"

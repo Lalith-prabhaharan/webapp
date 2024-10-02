@@ -18,11 +18,13 @@ const FeedbackSchema = new mongoose.Schema({
     }, // Rating from 1 to 5 stars
     difficulty: {
         type: String,
-        required : true
+        required : true,
+        enum: ['Easy', 'Medium', 'Hard']
     },
     comments: { 
         type: String, 
-        required: false 
+        required: false ,
+        maxlength: 500
     }, // Optional comments from the employee
     interactive: {
         type: String, 

@@ -15,6 +15,7 @@ import { Employees } from './Components/Admin/Employees';
 import { AddCourse } from './Components/Admin/AddCourse';
 import QuizForm from './Components/Admin/QuizForm';
 import Quiz from './Components/User/Quiz';
+import { CourseDetail } from './Components/User/CourseDetail';
 
 function App() {
     return (
@@ -32,7 +33,9 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>}> </Route>
-          <Route path='/dashboard' element={<Quiz/>}> </Route>
+          <Route path='/dashboard' element={<Dashboard/>}> </Route>
+          <Route path="/courses/:courseId" element={<CourseDetail/>}> </Route>
+          <Route path="/quiz/:courseId" element={<Quiz/>}> </Route>
           
         </Routes>
         </BrowserRouter>

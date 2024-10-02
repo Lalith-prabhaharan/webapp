@@ -15,6 +15,10 @@ export const Login = () => {
       email:email,
       password:pass
     },).then((res)=>{
+        const data=res.data
+        console.log(data.user)
+        // console.log(data.user.userId)
+        localStorage.setItem("id",data.user.userId)
         navigate('/dashboard')
       
     }).catch((err) => {

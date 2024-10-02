@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
+import { Link } from 'react-router-dom';
 import "../../styles/card.css"
 export const Course = ({ course }) => {
     const header = (
@@ -16,6 +17,7 @@ export const Course = ({ course }) => {
     return (
         <div className="card flex justify-content-center">
             <div className="course_card">
+            <Link to={`/courses/${course.courseId}`} className="cardDetail">
             <Card title={course.name || 'Course Name Unavailable'} subTitle={course.stack || 'Stack Unavailable'} header={header} className="md:w-25rem">
                 {/* <p className="m-0">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae 
@@ -25,6 +27,7 @@ export const Course = ({ course }) => {
                 <p className="posted-by m-0">Posted At: <b>{course.postedby || 'Unknown'}</b></p>
                 <p className="est-duration m-0">Duration: <b>{course.est_duration || 'Unknown'}</b></p>
             </Card>
+            </Link>
             </div>
         </div>
     )
