@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-const authMiddleware = async (req, res, next) => {
+const adminMiddleware = async (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
 
   if (!token) {
@@ -11,15 +11,17 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
+        // console.log(decoded);
+        
       const user = await User.findOne({ _id: decoded.id, role: decoded.role });
       if (!user) {
         return res.status(401).json({ msg: 'User not found' });
       }
+      next();
     } catch (error) {
     res.status(401).json({ msg: 'Token is not valid' });
   }
 };
 
-module.exports = authMiddleware;
+module.exports = adminMiddleware;
 // 

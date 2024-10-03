@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv')
 const app = express();
-
+const authMiddleware = require('./middleware/authMiddleware')
 // Middleware
 dotenv.config()
 const connect=async()=>{
@@ -24,7 +24,7 @@ app.options('*',cors());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoute'));
-app.use('/api/courses',require('./routes/courseRoute'))
+app.use('/api/courses', require('./routes/courseRoute'))
 app.use('/api/feedback',require('./routes/feedbackRoute'))
 app.use('/api/quiz',require('./routes/quizRoute'))
 app.use('/api/engagement',require('./routes/engagementRoute'))

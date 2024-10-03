@@ -8,6 +8,7 @@ import { Card } from 'primereact/card'
 import {Dropdown} from 'primereact/dropdown'
 import "../../styles/addemployee.css"
 import axios from "axios"
+import { AdminSidebar } from './AdminSidebar';
 export const AddCourse = () =>{
     const [course, setCourse] = useState({
         courseId: '',
@@ -65,7 +66,9 @@ export const AddCourse = () =>{
         e.preventDefault();
         console.log(course)
         try {
-            const response = await axios.post('http://localhost:8000/api/courses/addcourse', course);
+            const response = await axios.post('http://localhost:8000/api/courses/addcourse', course, {headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }});
             if (response.status === 201) {
                 setCourse({
                     courseId: '',
@@ -88,7 +91,7 @@ export const AddCourse = () =>{
     
     return(
     <div className="dashboard-container">
-        <Sidebar title="AddProduct"/>
+        <AdminSidebar title="AddCourse"/>
         <main className="main-content">
             <header className="dashboard-header">
                 <h1>Add Course</h1>

@@ -17,9 +17,15 @@ export const Login = () => {
     },).then((res)=>{
         const data=res.data
         console.log(data.user)
-        // console.log(data.user.userId)
+        console.log(data.user.role)
         localStorage.setItem("id",data.user.userId)
-        navigate('/dashboard')
+        localStorage.setItem("token",data.token)
+        if(data.user.role=="user"){
+          navigate('/dashboard')
+        }
+        else{
+          navigate('/employee')
+        }
       
     }).catch((err) => {
       console.error('Error:', err.response ? err.response.data : err.message);

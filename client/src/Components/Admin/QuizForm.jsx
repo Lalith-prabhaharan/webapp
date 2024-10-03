@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "../../styles/quizform.css"
 import { Sidebar } from '../User/Sidebar';
+import { useNavigate, useParams } from 'react-router-dom';
 const QuizForm = () => {
-    const [quiz, setQuiz] = useState({courseId: 1,
+    const navigate = useNavigate();
+    const {courseId} = useParams();
+    const [quiz, setQuiz] = useState({courseId: courseId,
         questions:[
-        {questionText: '', options: ['', '',''], answer: '' }
+        {questionText: '', options: ['', ''], answer: '' }
     ]});
 
     const handleQuestionChange = (index, e) => {
@@ -30,7 +33,7 @@ const QuizForm = () => {
     const addQuestion = () => {
     setQuiz((prevQuiz) => ({
         ...prevQuiz,
-        questions: [...prevQuiz.questions, { questionText: '', options: ['', '', ''], answer: '' }],
+        questions: [...prevQuiz.questions, { questionText: '', options: ['', ''], answer: '' }],
     }));
     };
 
@@ -45,9 +48,12 @@ const QuizForm = () => {
     e.preventDefault();
     try {
         console.log(quiz);
-        const response = await axios.post('http://localhost:8000/api/quiz', quiz);
+        const response = await axios.post('http://localhost:8000/api/quiz', quiz, {headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }});
         if (response.status === 201) {
             // Reset the form if needed
+            navigate(-1)
             setQuiz({
                 courseId: 1, // Or reset to the appropriate courseId
                 questions: [{ questionText: '', options: ['', '', ''], answer: '' }]
@@ -80,7 +86,7 @@ const QuizForm = () => {
                         <input
                             key={optIndex}
                             type="text"
-                            className="option-input"
+                            className="question-option-input"
                             placeholder={`Option ${optIndex + 1}`}
                             value={option}
                             onChange={(e) => handleOptionChange(index, optIndex, e.target.value)}

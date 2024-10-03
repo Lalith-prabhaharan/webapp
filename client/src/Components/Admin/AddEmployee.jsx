@@ -7,6 +7,7 @@ import { Card } from 'primereact/card'
 import {Dropdown} from 'primereact/dropdown'
 import "../../styles/addemployee.css"
 import axios from "axios"
+import { AdminSidebar } from './AdminSidebar'
 
 export const AddEmployee = () => {
 const toast = useRef(null);
@@ -60,7 +61,9 @@ const handleSubmit = async (e) => {
 e.preventDefault();
 console.log(employee)
 try {
-    const response = await axios.post('http://localhost:8000/api/auth/register', employee);
+    const response = await axios.post('http://localhost:8000/api/auth/register', employee, {headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+    }});
     if (response.status === 201) {
         setEmployee({
             userId: '',
@@ -83,7 +86,7 @@ try {
 
 return (
 <div className="dashboard-container">
-        <Sidebar title="AddProduct"/>
+        <AdminSidebar title="AddEmployee"/>
         <main className="main-content">
             <header className="dashboard-header">
                 <h1>Add Employee</h1>

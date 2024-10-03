@@ -1,11 +1,12 @@
 // components/Quiz.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import "../../styles/quizanswer.css"
 import { Sidebar } from './Sidebar';
 
 const Quiz = () => {
+    const navigate = useNavigate();     
     const { courseId } = useParams();
     const location = useLocation();
     const { timeSpent } = location.state;
@@ -14,9 +15,13 @@ const Quiz = () => {
 
     useEffect(() => {
         const fetchQuiz = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8000/api/quiz/1`);
+            try {                
+                const response = await axios.get(`http://localhost:8000/api/quiz/${courseId}`, {headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }});
                 setQuiz(response.data);
+                console.log(quiz);
+                
             } catch (error) {
                 console.error('Error fetching quiz:', error);
             }
@@ -44,7 +49,9 @@ const Quiz = () => {
         console.log('Submitted responses:', responses);
         try {
             console.log(quiz);
-            const quizResponse = await axios.post('http://localhost:8000/api/quiz/submit', responses);
+            const quizResponse = await axios.post('http://localhost:8000/api/quiz/submit', responses, {headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }});
             if (quizResponse.status === 200) {
                 // setQuiz({
                 //     courseId: '', 
@@ -62,8 +69,11 @@ const Quiz = () => {
                         }
                     ]
                 };
+                navigate(-1);
                 console.log(engagementData)
-                const engagementResponse = await axios.post('http://localhost:8000/api/engagement/', engagementData);
+                const engagementResponse = await axios.post('http://localhost:8000/api/engagement/', engagementData, {headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }});
                 if (engagementResponse.status === 200) {
                     console.log('Engagement data saved successfully:', engagementResponse.data);
                 } else {

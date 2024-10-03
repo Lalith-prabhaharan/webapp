@@ -16,6 +16,11 @@ import { AddCourse } from './Components/Admin/AddCourse';
 import QuizForm from './Components/Admin/QuizForm';
 import Quiz from './Components/User/Quiz';
 import { CourseDetail } from './Components/User/CourseDetail';
+import { Feedback } from './Components/User/Feedback';
+import {  Charts } from './Components/User/Chart';
+import { CourseList } from './Components/User/CourseList';
+import { AdminCourseList } from './Components/Admin/CourseList';
+import { Requiredauth } from './Components/utils/requiredAuth';
 
 function App() {
     return (
@@ -33,9 +38,19 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>}> </Route>
-          <Route path='/dashboard' element={<Dashboard/>}> </Route>
+          <Route path='/dashboard' element={<Requiredauth><Dashboard/></Requiredauth>}> </Route>
           <Route path="/courses/:courseId" element={<CourseDetail/>}> </Route>
           <Route path="/quiz/:courseId" element={<Quiz/>}> </Route>
+          <Route path="/course" element={<CourseList/>}> </Route>
+          <Route path="/feedback/:courseId" element={<Feedback/>}> </Route>
+          <Route path="/employee" element={<EmployeeList/>}> </Route>
+          <Route path="/create-quiz/:courseId" element={<QuizForm/>}> </Route>
+          <Route path="/courses" element={<AdminCourseList/>}> </Route>
+          <Route path="/addemployee" element={<AddEmployee/>}> </Route>
+          <Route path="/addcourse" element={<AddCourse/>}> </Route>
+
+          <Route path="/kk" element={<Charts/>}> </Route>
+          
           
         </Routes>
         </BrowserRouter>

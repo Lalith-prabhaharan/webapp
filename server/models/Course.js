@@ -12,7 +12,7 @@ const CourseSchema = new mongoose.Schema({
   est_duration: {
     type: String,
     required: true,
-    unique: true,
+    unique:false
   },
   postedby: {
     type: String,

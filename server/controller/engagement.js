@@ -51,4 +51,29 @@ const updateCourseEngagement = async (req, res) => {
     }
 };
 
-module.exports = { updateCourseEngagement };
+const getUserEngagements = async (req, res) => {
+    try {
+        const { userId } = req.params; // Get userId from the route parameters
+
+        // Find engagements for the specific user
+        const engagement = await Engagement.findOne({ userId });
+
+        if (!engagement) {
+            return res.status(404).json({ message: 'No engagements found for this user' });
+        }
+
+        // Prepare data for the chart
+        const engagementData = engagement.courseEngagements.map((courseEngagement) => ({
+            courseId: courseEngagement.courseId,
+            score: courseEngagement.score,
+            timeSpent: courseEngagement.timeSpent,
+        }));
+
+        return res.status(200).json(engagementData);
+    } catch (error) {
+        console.error('Error fetching user engagements:', error);
+        return res.status(500).json({ error: 'Failed to fetch user engagements' });
+    }
+};
+
+module.exports = { updateCourseEngagement,getUserEngagements };

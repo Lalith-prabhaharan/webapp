@@ -5,7 +5,7 @@ const Course = require('../models/Course');
 const addCourse= async (req, res) => {
   try {
     const { courseId, name, est_duration, postedby, stack, prerequisites, blogContent, videoUrls } = req.body;
-
+    console.log(courseId)
     const course = new Course({
       courseId,
       name,
@@ -19,6 +19,7 @@ const addCourse= async (req, res) => {
     await course.save();
     res.status(201).json({ message: 'Course created successfully', course });
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error: error.message });
   }
 };

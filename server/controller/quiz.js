@@ -15,6 +15,9 @@ const createQuiz = async (req, res) => {
 
 // Get quiz by course ID
 const getQuizByCourseId = async (req, res) => {
+    console.log("sjkhdasgdyuasf");
+    
+    console.log(req.params.courseId)
     try {
         const quiz = await Quiz.findOne({ courseId: req.params.courseId });
         if (!quiz) return res.status(404).json({ message: 'Quiz not found' });

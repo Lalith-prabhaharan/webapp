@@ -9,6 +9,7 @@ import { Button } from 'primereact/button';
 import "../../styles/employeelist.css"
 import 'primeicons/primeicons.css';
 import { Sidebar } from '../User/Sidebar';
+import { AdminSidebar } from './AdminSidebar';
 
 export const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);
@@ -21,7 +22,9 @@ export const EmployeeList = () => {
 
     const fetchEmployees = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/api/auth/all');
+            const res = await axios.get('http://localhost:8000/api/auth/all', {headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }});
             setEmployees(res.data);
             setFilteredEmployees(res.data);
         } catch (err) {
@@ -70,7 +73,9 @@ export const EmployeeList = () => {
     const handleDelete = async (id) => {
         try {
             console.log(id)
-            await axios.delete(`http://localhost:8000/api/auth/user/${id}`)
+            await axios.delete(`http://localhost:8000/api/auth/user/${id}`, {headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }})
             setEmployees(prevEmployees => prevEmployees.filter(emp => emp.userId !== id));
             setFilteredEmployees(prevFilteredEmployees => prevFilteredEmployees.filter(emp => emp.userId !== id));
             // toast.current.show({
@@ -90,7 +95,9 @@ export const EmployeeList = () => {
         console.log(selectedDetails.userId)
         console.log(selectedDetails)
         try {
-            await axios.patch(`http://localhost:8000/api/auth/user/${selectedDetails.userId}`, selectedDetails);
+            await axios.patch(`http://localhost:8000/api/auth/user/${selectedDetails.userId}`, selectedDetails, {headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }});
             await fetchEmployees();
             setEditMode(false);
             // toast.current.show({
@@ -123,7 +130,9 @@ export const EmployeeList = () => {
 
 
     return (
-        <div>
+        <div className='dashboard-container'>
+        <AdminSidebar title="Employee" />
+        <main className="main-content">
             <Toast ref={toast} />
             <InputText
                 type="text"
@@ -133,6 +142,7 @@ export const EmployeeList = () => {
                 placeholder="Search Name or ID..."
             />
             <DataTable removableSort showGridlines stripedRows paginator rows={10} value={filteredEmployees} className='pending'>
+                <Column field="userId" style={{ width: "5%" }} sortable header="ID"></Column>
                 <Column field="name" sortable header="Employee Name"></Column>
                 <Column field="email" style={{ width: "20%" }} sortable header="Email"></Column>
                 <Column field="department" style={{ width: "20%" }} sortable header="Department"></Column>
@@ -189,6 +199,7 @@ export const EmployeeList = () => {
                     </Card>
                 </div>
             )}
+        </main>
         </div>
     );
 };

@@ -1,15 +1,15 @@
 import React,{useRef} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import "../../styles/dashboard.css"
 // import logo from "../images/appleLogo.jpg"
 
-export const Sidebar = ({title}) => {
+export const AdminSidebar = ({title}) => {
 const activeTab = title;
-const navigate = useNavigate();
+const navigate = useNavigate()
 const logout=()=>{
-    console.log('Logging out');
     localStorage.removeItem("token")
-    navigate('/')
+    navigate("/")
+    console.log('Logging out');
 }
 return (
     <div className="dashboard-container">
@@ -22,8 +22,17 @@ return (
         <li  className={activeTab === "Dashboard" ? "active-tab" : ""}>
             <Link to="/dashboard"> Dashboard </Link>
         </li>
-        <li className={activeTab === "Course" ? "active-tab" : ""}>
-            <Link to="/course"> Course </Link>
+        <li className={activeTab === "Employee" ? "active-tab" : ""}>
+            <Link to="/employee"> Employees </Link>
+        </li>
+        <li className={activeTab === "Courses" ? "active-tab" : ""}>
+            <Link to="/courses"> Courses </Link>
+        </li>
+        <li className={activeTab === "AddEmployee" ? "active-tab" : ""}>
+            <Link to="/addemployee"> Add Employee </Link>
+        </li>
+        <li className={activeTab === "AddCourse" ? "active-tab" : ""}>
+            <Link to="/addcourse"> Add Course </Link>
         </li>
         </ul>
         <hr></hr>

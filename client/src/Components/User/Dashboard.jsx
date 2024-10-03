@@ -10,14 +10,49 @@ import { CourseList } from './CourseList';
 import { NavBar } from './NavBar';
 
 export const Dashboard = () => {
-const [products,setProducts]=useState([])
-const [profit,setProfit]=useState("")
-const [orderCount,setCount]=useState(0)
-
-const totalValue= products.reduce((value,product)=>value+product.totalprice,0);
-const outOfStock= products.filter((product)=> product.quantity===0).length;
-const category = new Set(products.map((product)=>product.category)).size;
-
+    const [totalProfit, setTotalProfit] = useState(0);
+    const [totalCourses, setTotalCourses] = useState(0);
+    const [completedCourses, setCompletedCourses] = useState(0);
+    const [totalTimeSpent, setTotalTimeSpent] = useState(0);
+    const [cumulativeQuizScore, setCumulativeQuizScore] = useState(0);
+    useEffect(() => {
+        const fetchDashboardData = async () => {
+            try {
+                // Fetch courses and engagement data
+                const courseResponse = await axios.get("http://localhost:8000/api/courses");
+                const engagementResponse = await axios.get(`http://localhost:8000/api/engagement/get/${localStorage.getItem("id")}`);
+    
+                const coursesData = courseResponse.data;
+                const engagementData = engagementResponse.data;
+    
+                // Calculate total courses
+                // console.log(coursesData)
+                setTotalCourses(coursesData.length);
+                // Calculate completed courses
+                const completedCoursesCount = engagementData.filter(engagement => 
+                    engagement.score > 0 // Adjust condition based on your criteria for completed courses
+                ).length;
+                setCompletedCourses(completedCoursesCount);
+    
+                // Calculate total time spent and cumulative quiz score
+                const timeSpent = engagementData.reduce((acc, engagement) => acc + engagement.timeSpent, 0);
+                setTotalTimeSpent(timeSpent);
+    
+                const totalScore = engagementData.reduce((acc, engagement) => acc + engagement.score, 0);
+                setCumulativeQuizScore(totalScore);
+    
+                // Calculate profit based on your business logic (this is an example)
+                const profit = coursesData.reduce((acc, course) => acc + course.price, 0); // Assuming each course has a 'price' field
+                setTotalProfit(profit);
+    
+            } catch (error) {
+                console.error("Error fetching dashboard data:", error);
+            }
+        };
+    
+        fetchDashboardData();
+    }, []);
+        
 return (
     <div className='dashboard-container'>
     {/* <NavBar/> */}
@@ -30,36 +65,34 @@ return (
         </div>
         </header>
         <div className="dashboard_card">
-        <Card title="Profit">
+        <Card title="No. Of Courses">
             <p style={{color:"green"}} className="m-0">
-                {profit}
+            {totalCourses}
                 </p>
         </Card>
-        <Card title="No. Of Orders">
+        <Card title="Completed Courses">
             <p style={{color:"green"}} className="m-0">
-                {orderCount}
-                </p>
-        </Card>
-        <Card title="Total Products">
-            <p style={{color:"green"}} className="m-0">
-                {products.length} 
+                {completedCourses} 
             </p>
         </Card>
-        <Card title="Store Value">
+        <Card title="Total Time Spent">
             <p style={{color:"green"}}   className="m-0">
-                {totalValue} 
+                {totalTimeSpent} minutes
             </p>
         </Card>
-        <Card title="Out Of Stock">
+        <Card title="Cumulative Quiz Score">
             <p className="m-0">
-                {outOfStock} 
+                {cumulativeQuizScore} 
             </p>
         </Card>
-        <Card title="Total Categories">
+        <Card title="Completion Rate">
+            <p className="m-0">{((completedCourses / totalCourses) * 100).toFixed(2)}%</p>
+        </Card>
+        {/* <Card title="Total Categories">
             <p className="m-0">
                 {category}
             </p>
-        </Card>
+        </Card> */}
         </div>
     <CourseList/>
     </main>

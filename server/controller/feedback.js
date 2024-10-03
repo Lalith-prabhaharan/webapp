@@ -27,7 +27,7 @@ const addFeedback = async (req, res) => {
 const fetchFeedbackByCourseId = async (req, res) => {
     try {
         const { courseId } = req.params;
-
+        console.log("cours",courseId)
         const feedbackList = await Feedback.find({ courseId }).populate('userId', 'name'); // Populate userId with name
 
         if (feedbackList.length === 0) {
@@ -40,8 +40,27 @@ const fetchFeedbackByCourseId = async (req, res) => {
         return res.status(500).json({ error: 'Failed to fetch feedback' });
     }
 };
+// Fetch feedback by courseId and userId
+const getFeedbackByCourseAndUser = async (req, res) => {
+    try {
+        const { courseId, userId } = req.query;
+
+        // Find feedback entry for the specified course and user
+        const feedback = await Feedback.findOne({ courseId, userId });
+
+        if (!feedback) {
+            return res.status(404).json({ message: 'No feedback found for this course and user' });
+        }
+
+        return res.status(200).json(feedback);
+    } catch (error) {
+        console.error('Error fetching feedback for course and user:', error);
+        return res.status(500).json({ error: 'Failed to fetch feedback' });
+    }
+};
 
 module.exports = {
     addFeedback,
     fetchFeedbackByCourseId,
+    getFeedbackByCourseAndUser
 };

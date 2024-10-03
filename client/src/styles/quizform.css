@@ -36,7 +36,7 @@
 
 /* Input styles */
 .question-input,
-.option-input,
+.question-option-input,
 .answer-input {
     width: 50%;                /* Shortened width for inputs */
     margin-right: 2%;
