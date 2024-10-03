@@ -1,0 +1,32 @@
+.admin-dashboard-container {
+    padding: 2rem;
+    background-color: #f4f4f9;
+}
+
+.charts-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.chart-wrapper {
+    background-color: white;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    min-width: 300px;
+}
+
+.datatable-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.p-datatable-wrapper {
+    overflow-x: auto;
+}

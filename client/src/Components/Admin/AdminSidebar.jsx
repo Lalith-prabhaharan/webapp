@@ -20,7 +20,7 @@ return (
         <h2 style={{textAlign:'center'}}>JMAN LEARNING</h2>
         <ul className="sidebar-menu">
         <li  className={activeTab === "Dashboard" ? "active-tab" : ""}>
-            <Link to="/dashboard"> Dashboard </Link>
+            <Link to="/insightdashboard"> Dashboard </Link>
         </li>
         <li className={activeTab === "Employee" ? "active-tab" : ""}>
             <Link to="/employee"> Employees </Link>
