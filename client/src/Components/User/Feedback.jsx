@@ -7,6 +7,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Sidebar } from "./Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 export const Feedback = () =>{
     const {courseId} = useParams();
     const navigate = useNavigate();
@@ -47,7 +48,8 @@ export const Feedback = () =>{
             const response = await axios.post('http://localhost:8000/api/feedback/add', feedbackData);
     
             if (response.status === 201) {
-                console.log('Feedback submitted successfully', response.data);
+                toast.success("Feedback Saved Successfully")
+                // console.log('Feedback submitted successfully', response.data);
                 navigate(-1);
             } else {
                 throw new Error('Failed to submit feedback');

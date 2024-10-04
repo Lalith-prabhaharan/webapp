@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import "../../styles/quizanswer.css"
 import { Sidebar } from './Sidebar';
+import { toast } from 'react-toastify';
 
 const Quiz = () => {
     const navigate = useNavigate();     
@@ -58,6 +59,7 @@ const Quiz = () => {
                 //     submittedAnswers:[]
                 // });
                 // console.log(quizResponse.data.score)
+                toast.success("Submitted Successfully")
                 const  correctAnswers  = quizResponse.data.score;
                 const engagementData = {
                     userId: localStorage.getItem("id"),  // Get the logged-in user's ID

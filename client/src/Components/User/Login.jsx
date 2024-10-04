@@ -2,6 +2,7 @@ import React, { useState,useRef } from 'react'
 import loginImage from "../../images/login.jpg"
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
+import { toast } from 'react-toastify'
 import "../../styles/login.css"
 
 export const Login = () => {
@@ -16,19 +17,22 @@ export const Login = () => {
       password:pass
     },).then((res)=>{
         const data=res.data
-        console.log(data.user)
-        console.log(data.user.role)
+        // console.log(data.user)
+        // console.log(data.user.role)
         localStorage.setItem("id",data.user.userId)
         localStorage.setItem("token",data.token)
+        toast.success("Authenticated")
         if(data.user.role=="user"){
           navigate('/dashboard')
         }
         else{
           navigate('/employee')
+          
         }
       
     }).catch((err) => {
-      console.error('Error:', err.response ? err.response.data : err.message);
+      toast.error("Invalid Credentials")
+      // console.error('Error:', err.response ? err.response.data : err.message);
     });
   }
   return (

@@ -2,11 +2,11 @@ import React,{useRef,useState} from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 import ReactMarkdown from 'react-markdown';
 import { InputText } from 'primereact/inputtext'
-import { Sidebar } from '../User/Sidebar'
 import {Button} from 'primereact/button'
 import { Card } from 'primereact/card'
 import {Dropdown} from 'primereact/dropdown'
 import "../../styles/addemployee.css"
+import { toast } from 'react-toastify';
 import axios from "axios"
 import { AdminSidebar } from './AdminSidebar';
 export const AddCourse = () =>{
@@ -69,7 +69,7 @@ export const AddCourse = () =>{
             const response = await axios.post('http://localhost:8000/api/courses/addcourse', course, {headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }});
-            if (response.status === 201) {
+            if (response.data.message === 'created') {
                 setCourse({
                     courseId: '',
                     name: '',
@@ -80,7 +80,14 @@ export const AddCourse = () =>{
                     postedby:'',
                     blogContent:''
                 });
+                toast.success("Course Created")
             } 
+            else if (response.data.message === 'exists'){
+                toast.warning("CourseId aldready Exists")
+            }
+            else if (response.data.message === 'required'){
+                toast.warning("All fields except video URLs are required.")
+            }
             else {
                 throw new Error("Failed to add Course");
             }
@@ -210,7 +217,7 @@ export const AddCourse = () =>{
                             </div>
                             <Button
                                 type="submit"
-                                label="Add Employee"
+                                label="Add Course"
                                 className="p-button-success"
                             />
                         </div>

@@ -14,6 +14,7 @@ export const AdminCourseList = () => {
     const [courses, setCourses] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [filteredCourses, setFilteredCourses] = useState([]);
+    const [quizzes, setQuizzes] = useState([]);
     const toast = useRef(null);
     const navigate = useNavigate();
 
@@ -27,8 +28,22 @@ export const AdminCourseList = () => {
         }
     };
 
+    const fetchQuizzes = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/api/quiz/');
+            setQuizzes(res.data);
+        } catch (err) {
+            console.error("Error fetching quizzes:", err);
+        }
+    };
+
+    const quizExistsForCourse = (courseId) => {
+        return quizzes.some((quiz) => quiz.courseId === courseId);
+    };
+
     useEffect(() => {
         fetchCourses();
+        fetchQuizzes();
     }, []);
 
     useEffect(() => {
@@ -56,8 +71,12 @@ export const AdminCourseList = () => {
     const buttons = (course) => {
         return (
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                {!quizExistsForCourse(course.courseId) ? (
                 <Button label="Create Quiz" onClick={() => handleQuizNavigation(course.courseId)} />
-            </div>
+                ) : (
+                    <span>Quiz Already Created</span>
+                )}
+                </div>
         );
     };
 

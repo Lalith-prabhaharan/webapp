@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../../styles/quizform.css"
 import { Sidebar } from '../User/Sidebar';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const QuizForm = () => {
     const navigate = useNavigate();
     const {courseId} = useParams();
@@ -54,6 +55,7 @@ const QuizForm = () => {
         if (response.status === 201) {
             // Reset the form if needed
             navigate(-1)
+            toast.success("Quiz Created")
             setQuiz({
                 courseId: 1, // Or reset to the appropriate courseId
                 questions: [{ questionText: '', options: ['', '', ''], answer: '' }]

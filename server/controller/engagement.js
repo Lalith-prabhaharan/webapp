@@ -1,5 +1,5 @@
 const Engagement = require('../models/Engagement'); // Assuming this is the path to your model
-
+const User = require('../models/User')
 const updateCourseEngagement = async (req, res) => {
     try {
         const { userId, courseEngagements } = req.body;
@@ -76,4 +76,125 @@ const getUserEngagements = async (req, res) => {
     }
 };
 
-module.exports = { updateCourseEngagement,getUserEngagements };
+const getCoursesEngagements = async (req, res) => {
+    try {
+        // Aggregate data to get total time spent and total score per course
+        const engagementData = await Engagement.aggregate([
+            { $unwind: "$courseEngagements" }, // Unwind the array to work with individual course engagements
+            {
+                $group: {
+                    _id: "$courseEngagements.courseId", // Group by courseId
+                    totalTimeSpent: { $sum: "$courseEngagements.timeSpent" }, // Sum the time spent
+                    totalScore: { $sum: "$courseEngagements.score" }, // Sum the scores
+                },
+            },
+            {
+                $lookup: {
+                    from: "courses", // Assuming your course model is stored in the "courses" collection
+                    localField: "_id",
+                    foreignField: "courseId",
+                    as: "courseDetails",
+                },
+            },
+            {
+                $unwind: "$courseDetails", // Unwind to get the course name
+            },
+            {
+                $project: {
+                    courseId: "$_id",
+                    courseName: "$courseDetails.name", // Assuming the course model has a name field
+                    totalTimeSpent: 1,
+                    totalScore: 1,
+                },
+            },
+        ]);
+
+        return res.status(200).json(engagementData);
+    } catch (error) {
+        console.error('Error fetching courses engagements:', error);
+        return res.status(500).json({ error: 'Failed to fetch courses engagements' });
+    }
+};
+
+const getCompletedCoursesByDepartment = async (req, res) => {
+    try {
+        const completedCoursesByDepartment = await Engagement.aggregate([
+            { $unwind: "$courseEngagements" },
+            {
+                $lookup: {
+                    from: "users",   // Assuming the users collection is named 'users'
+                    localField: "userId",  
+                    foreignField: "userId",  
+                    as: "userDetails"
+                }
+            },
+            { $unwind: "$userDetails" },
+            {
+                $group: {
+                    _id: "$userDetails.department",  
+                    completedCoursesCount: { $sum: 1 }
+                }
+            },
+            {
+                $project: {
+                    department: "$_id",  
+                    completedCoursesCount: 1,
+                    _id: 0  
+                }
+            }
+        ]);
+
+        return res.status(200).json(completedCoursesByDepartment);
+    } catch (error) {
+        console.error('Error fetching completed courses by department:', error);
+        return res.status(500).json({ error: 'Failed to fetch data' });
+    }
+};
+
+const getUsersWithCompletedCourses = async (req, res) => {
+    try {
+        // Fetch all users
+        const users = await User.find({}, 'userId name department designation');
+        
+        // Fetch all engagements
+        const engagements = await Engagement.find({});
+        
+        // Prepare result data by matching user data with their engagement
+        const userData = users.map((user) => {
+                const userEngagement = engagements.find((engagement) => engagement.userId === user.userId);
+                const completedCourses = userEngagement ? userEngagement.courseEngagements.length : 0;  // Number of completed courses
+                
+            if(user.designation){
+                return {
+                    Name: user.name,
+                    Designation: user.designation,
+                    Department: user.department,
+                    TotalTrainings: completedCourses
+                };
+            }
+        });
+        
+        // Sort by the number of trainings (optional)
+        userData.sort((a, b) => b.TotalTrainings - a.TotalTrainings);
+        
+        // Respond with user data and the total number of trainings completed
+        return res.status(200).json(userData);
+    } catch (error) {
+        console.error('Error fetching user data with completed courses:', error);
+        return res.status(500).json({ error: 'Failed to fetch user data with completed courses' });
+    }
+};
+
+const fetchAllEngagements = async (req, res) => {
+    try {
+        const engagements = await Engagement.find(); // Fetch all engagements
+        return res.status(200).json({ success: true, data: engagements });
+    } catch (error) {
+        console.error('Error fetching engagements:', error);
+        return res.status(500).json({ success: false, message: 'Server error' });
+    }
+};
+
+module.exports = { updateCourseEngagement,getUserEngagements ,
+    getCoursesEngagements, getCompletedCoursesByDepartment,
+    getUsersWithCompletedCourses, fetchAllEngagements };

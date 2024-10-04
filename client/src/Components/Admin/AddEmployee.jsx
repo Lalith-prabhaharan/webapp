@@ -1,5 +1,4 @@
 import React,{useRef,useState} from 'react'
-import { Toast } from 'primereact/toast'
 import { InputText } from 'primereact/inputtext'
 import { Sidebar } from '../User/Sidebar'
 import {Button} from 'primereact/button'
@@ -8,9 +7,11 @@ import {Dropdown} from 'primereact/dropdown'
 import "../../styles/addemployee.css"
 import axios from "axios"
 import { AdminSidebar } from './AdminSidebar'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 export const AddEmployee = () => {
-const toast = useRef(null);
+const navigate = useNavigate();
 const [employee, setEmployee] = useState({
 userId: '',
 name: '',
@@ -75,12 +76,32 @@ try {
             designation: '',
             createdAt:'',
         });
+        toast.success("Employee Added")
+        navigate("/employee")
     } 
     else {
         throw new Error("Failed to add Employee");
     }
 } catch (error) {
-    console.error('Error adding employee:', error);
+    if (error.response) {
+        if(error.response.data.msg === 'Invalid email' ){
+            toast.warning(error.response.data.msg)
+        }
+        else if(error.response.data.msg === 'Employee exists' ){
+            toast.warning(error.response.data.msg)
+        }
+        else if(error.response.data.msg === 'All fields are required' ){
+            toast.warning(error.response.data.msg)
+        }
+        else{
+            console.error('Error adding employee:', error);
+            toast.error("Error adding employee")
+        }
+    }
+    else {
+        // Network error or other issues
+        toast.error('An unexpected error occurred.' );
+    }
 }
 } 
 
@@ -95,7 +116,7 @@ return (
                 </div>
             </header>
             <div className="add-product-container">
-                <Toast ref={toast} />
+                
                 <Card title="Add New Employee" className="add-product-card">
                     <form onSubmit={handleSubmit} className="form-two-columns">
                         <div className="form-column">
@@ -116,7 +137,7 @@ return (
                                     name="name"
                                     value={employee.name}
                                     onChange={handleChange}
-                                    required
+                                    
                                 />
                             </div>
                             <div className="p-field">

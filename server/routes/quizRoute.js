@@ -1,7 +1,7 @@
 // routes/quizRoutes.js
 const express = require('express');
 const router = express.Router();
-const { createQuiz,getQuizByCourseId,evaluateQuiz } = require('../controller/quiz.js');
+const { createQuiz,getQuizByCourseId,evaluateQuiz, getQuizzes } = require('../controller/quiz.js');
 const adminMiddleware = require('../middleware/adminMiddleware');
 const authMiddleware = require('../middleware/authMiddleware.js');
 
@@ -12,5 +12,5 @@ router.post('/',adminMiddleware, createQuiz);
 // Get quiz by course ID
 router.get('/:courseId',getQuizByCourseId);
 router.post('/submit', evaluateQuiz);
-
+router.get('/',getQuizzes)
 module.exports = router;

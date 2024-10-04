@@ -23,6 +23,8 @@ import { AdminCourseList } from './Components/Admin/CourseList';
 import { Requiredauth } from './Components/utils/requiredAuth';
 import { AdminSidebar } from './Components/Admin/AdminSidebar';
 import { AdminDashboard } from './Components/Admin/AdminDashboard';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     return (
@@ -51,11 +53,8 @@ function App() {
           <Route path="/courses" element={<AdminCourseList/>}> </Route>
           <Route path="/addemployee" element={<AddEmployee/>}> </Route>
           <Route path="/addcourse" element={<AddCourse/>}> </Route>
-
-          <Route path="/kk" element={<Charts/>}> </Route>
-          
-          
         </Routes>
+        <ToastContainer />
         </BrowserRouter>
     );
 }

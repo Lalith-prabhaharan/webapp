@@ -8,10 +8,20 @@ const User = require('../models/User');
 const registerUser = async (req, res) => {
     const {userId, name, email, password, role, department, designation, createdAt } = req.body;
     try {
+      if (!userId || !name || !email || !password || !department || !designation) {
+        return res.status(400).json({ msg: 'All fields are required' });
+        }
+
+        // Validate email format (basic regex)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({ msg:'Invalid email' });
+        }
+
         // Check if the user already exists
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ userId });
         if (user) {
-        return res.status(400).json({ msg: 'User already exists' });
+            return res.status(400).json({ msg: 'Employee exists' });
         }
         
         // Create a new user
@@ -55,7 +65,7 @@ const loginUser = async (req, res) => {
     // Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
+      return res.status(400).json({ msg: 'Invalid credentials1' });
     }
 
     // Generate JWT

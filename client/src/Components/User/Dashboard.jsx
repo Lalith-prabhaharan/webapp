@@ -70,7 +70,7 @@ return (
             {totalCourses}
                 </p>
         </Card>
-        <Card title="Completed Courses">
+        <Card title="No. Completed Courses (Tests Taken)">
             <p style={{color:"green"}} className="m-0">
                 {completedCourses} 
             </p>
