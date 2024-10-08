@@ -25,6 +25,7 @@ import { AdminSidebar } from './Components/Admin/AdminSidebar';
 import { AdminDashboard } from './Components/Admin/AdminDashboard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Discussions from './Components/User/Discussions';
 
 function App() {
     return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="/course" element={<CourseList/>}> </Route>
           <Route path="/feedback/:courseId" element={<Feedback/>}> </Route>
           <Route path="/employee" element={<EmployeeList/>}> </Route>
+          <Route path="/discussions/:courseId" element={<Discussions/>}> </Route>
           <Route path="/create-quiz/:courseId" element={<QuizForm/>}> </Route>
           <Route path="/courses" element={<AdminCourseList/>}> </Route>
           <Route path="/addemployee" element={<AddEmployee/>}> </Route>
