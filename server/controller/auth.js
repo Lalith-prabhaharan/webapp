@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
         const token = jwt.sign({ id: user.userId, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         // Send response with token and user data
-        res.status(201).json({ token, user: { id: user.userId, email: user.email, role: user.role, department: user.department, designation: user.designation } });
+        res.status(201).json({ token, user: { id: user.userId, email: user.email, name:user.name, role: user.role, department: user.department, designation: user.designation } });
 
     } 
     catch (error) {
@@ -72,7 +72,7 @@ const loginUser = async (req, res) => {
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     // Send response with token and user data
-    res.json({ token, user: { id: user._id, email: user.email, role: user.role, userId: user.userId, department: user.department, designation: user.designation } });
+    res.json({ token, user: { id: user._id, email: user.email, name:user.name, role: user.role, userId: user.userId, department: user.department, designation: user.designation } });
 
   } catch (error) {
     res.status(500).send('Server error');

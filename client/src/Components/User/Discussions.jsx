@@ -13,14 +13,14 @@ const Discussions = () => {
 
   useEffect(() => {
     // Fetch discussions for the course
-    axios.get(`/api/discussions/course/${courseId}`).then(response => {
+    axios.get(`http://localhost:8000/api/discussion/${courseId}`).then(response => {
       setDiscussions(response.data);
     });
   }, [courseId]);
 
   const handleCreateDiscussion = () => {
     // Post a new discussion
-    axios.post('/api/discussions', { courseId, userId: 'currentUserId', topic: newTopic, description: newDescription })
+    axios.post('http://localhost:8000/api/discussion', { courseId, userId: localStorage.getItem("id"), topic: newTopic, name:localStorage.getItem("name"), description: newDescription })
       .then(response => {
         setDiscussions([response.data, ...discussions]);
         setNewTopic('');
@@ -51,13 +51,18 @@ const Discussions = () => {
             </div>
 
             <div className="discussion-list">
-                {discussions.map(discussion => (
+            {discussions && discussions.length > 0 ? (
+                discussions.map(discussion => (
                 <div key={discussion._id} className="discussion-item">
                     <h3>{discussion.topic}</h3>
                     <p>{discussion.description}</p>
-                    <p><strong>Posted by:</strong> {discussion.userId.name} <strong> At:</strong>{discussion.createdAt}</p>
+                    <p><strong>Posted by:</strong> {discussion.name} <strong> At:</strong>{discussion.createdAt}</p>
                 </div>
-                ))}
+                ))
+              ):(
+                <p>No discussions started yet!!</p>
+              )
+              }
             </div>
             </div>
         </main>

@@ -28,6 +28,7 @@ app.use('/api/courses', require('./routes/courseRoute'))
 app.use('/api/feedback',require('./routes/feedbackRoute'))
 app.use('/api/quiz',require('./routes/quizRoute'))
 app.use('/api/engagement',require('./routes/engagementRoute'))
+app.use('/api/discussion',require('./routes/discussionsRoute'))
 
 app.listen(8000, () => {
     connect()

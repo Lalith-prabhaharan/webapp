@@ -63,6 +63,12 @@ export const CourseDetail = () => {
                 <Link to={`/feedback/${course.courseId}`} className="feedback-link">
                     Give Feedback
                 </Link>
+                <p className="feedback-description">
+                    Queries about Course, Feel free to Discuss with Other Employees.
+                </p>
+                <Link to={`/discussions/${course.courseId}`} className="feedback-link">
+                    Go To Discussions
+                </Link>
             </div>
         </div>
         </main>

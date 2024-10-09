@@ -17,9 +17,10 @@ export const Login = () => {
       password:pass
     },).then((res)=>{
         const data=res.data
-        // console.log(data.user)
+        console.log(data.user)
         // console.log(data.user.role)
         localStorage.setItem("id",data.user.userId)
+        localStorage.setItem("name",data.user.name)
         localStorage.setItem("token",data.token)
         toast.success("Authenticated")
         if(data.user.role=="user"){

@@ -43,10 +43,10 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>}> </Route>
-          <Route path='/dashboard' element={<Dashboard/>}> </Route>
-          <Route path='/insightdashboard' element={<AdminDashboard/>}> </Route>
-          <Route path="/courses/:courseId" element={<CourseDetail/>}> </Route>
-          <Route path="/quiz/:courseId" element={<Quiz/>}> </Route>
+          <Route path='/dashboard' element={<Requiredauth><Dashboard/></Requiredauth>}> </Route>
+          <Route path='/insightdashboard' element={<Requiredauth><AdminDashboard/></Requiredauth>}> </Route>
+          <Route path="/courses/:courseId" element={<Requiredauth><CourseDetail/></Requiredauth>}> </Route>
+          <Route path="/quiz/:courseId" element={<Requiredauth><Quiz/></Requiredauth>}> </Route>
           <Route path="/course" element={<CourseList/>}> </Route>
           <Route path="/feedback/:courseId" element={<Feedback/>}> </Route>
           <Route path="/employee" element={<EmployeeList/>}> </Route>
