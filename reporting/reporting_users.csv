@@ -1,0 +1,168 @@
+userId,total_time_spent,avg_engagement_score,total_discussions,name,department,designation
+1,15077,0.38916666666666666,3122,Connie Cox,Consultancy,Software Engineer
+2,14158,0.5058333333333334,2512,Debra Bishop,Data Engineering,Project Manager
+4,15327,0.4778571428571428,3049,Monica Fuentes,Data Science,Senior Software Engineer
+5,13294,0.5479166666666666,2920,Patricia Aguilar,Full-Stack,Solutions Enabler
+6,15613,0.5733333333333334,3772,Misty Richardson,Consultancy,Solutions Consultant
+7,12091,0.49222222222222217,3236,Theresa Dunlap,Consultancy,Software Engineer
+8,13469,0.78,2817,Brandi Hernandez,Data Science,Principal Architect
+10,13805,0.4963333333333333,2841,Brent Mayer,Testing,Principal Architect
+11,16699,0.5022222222222222,3237,Michael Taylor,Full-Stack,Intern
+12,11598,0.39133333333333337,2563,Patricia Khan,Testing,Solutions Enabler
+13,14999,0.5522222222222223,2755,Nicholas Long,Full-Stack,Senior Software Engineer
+14,15229,0.5005555555555556,3274,Brenda Cooley,Devops,Project Manager
+16,14290,0.21000000000000002,3212,Heather Graham,Full-Stack,Solutions Enabler
+17,14296,0.61875,3055,Amanda Johnson,Data Science,Senior Software Engineer
+19,14468,0.42466666666666664,3294,Craig Torres,Full-Stack,Solutions Architect
+20,14405,0.7799999999999999,3413,Colleen Middleton,Full-Stack,Solutions Consultant
+21,13745,0.6491666666666667,2952,Desiree Castro,Devops,Intern
+22,14295,0.6983333333333334,3033,Adam Waters,Devops,Senior Software Engineer
+23,13410,0.4191666666666667,2894,Margaret Torres,Data Science,Solutions Architect
+25,13209,0.5075000000000001,2736,Dr. Megan Benton MD,Data Engineering,Principal Architect
+26,15342,0.5355555555555556,3243,Ryan Wright,Devops,Solutions Architect
+27,13535,0.2516666666666667,2735,Jeffrey Smith,Devops,Solutions Architect
+29,13999,0.28500000000000003,2655,Javier Perez,Testing,Software Engineer
+30,16365,0.46708333333333335,3473,Amber Turner,Full-Stack,Solutions Architect
+31,15009,0.515,3071,Angela Hutchinson,Full-Stack,Project Manager
+32,14162,0.7400000000000001,2658,Troy Owens,Devops,Software Engineer
+33,13467,0.5766666666666668,2475,Patricia Craig,Testing,Principal Architect
+34,11903,0.7225,2518,Gary Baldwin,Testing,Software Engineer
+36,12975,0.5233333333333333,2780,Michelle Brown,Consultancy,Software Engineer
+38,13975,0.6275,3047,Stephen Heath,Full-Stack,Solutions Architect
+39,15961,0.5422222222222223,2966,Robert Smith,Full-Stack,Principal Architect
+40,14271,0.5194444444444445,3123,Erika Jackson,Devops,Principal Architect
+41,14356,0.315,3006,Theresa Brady,Devops,Solutions Architect
+42,11341,0.44000000000000006,2603,William Clark PhD,Data Engineering,Senior Software Engineer
+43,15169,0.62,3073,Mark Johnson,Data Science,Project Manager
+44,17837,0.4183333333333333,3202,Maria Blevins,Data Science,Principal Architect
+45,15828,0.6079166666666667,3209,Marisa Holmes,Testing,Software Engineer
+46,16543,0.44333333333333336,3030,Lindsey Garcia,Full-Stack,Intern
+47,14729,0.3516666666666667,3087,Mrs. Theresa Jones DDS,Devops,Solutions Architect
+48,14553,0.8649999999999999,2986,Matthew Brown,Testing,Solutions Architect
+49,12484,0.5066666666666667,2841,John Obrien,Data Engineering,Project Manager
+50,14048,0.39333333333333337,2794,Victor Vasquez,Devops,Solutions Enabler
+52,15216,0.6900000000000001,3213,Jennifer Williams,Devops,Senior Software Engineer
+54,14842,0.46,3269,Heather Lee,Devops,Solutions Enabler
+55,15292,0.6783333333333333,3211,Vanessa Bennett,Data Engineering,Solutions Consultant
+56,12744,0.5150000000000001,2300,Sarah Johnson,Data Science,Solutions Consultant
+57,14998,0.3683333333333334,2812,Norma Pace,Testing,Intern
+58,14250,0.2283333333333334,2851,Michael Ball,Data Engineering,Senior Software Engineer
+60,14225,0.39166666666666666,2951,Bonnie Garcia MD,Full-Stack,Project Manager
+61,12948,0.4708333333333333,2825,Timothy Rodriguez,Data Engineering,Solutions Enabler
+62,14853,0.6361111111111111,3098,Mary Butler,Devops,Solutions Architect
+63,14666,0.4605555555555556,2678,Brian Bowers,Full-Stack,Intern
+64,14909,0.5416666666666667,3066,Matthew Garcia,Testing,Senior Software Engineer
+66,16420,0.7566666666666667,2961,Rebecca Bell,Consultancy,Solutions Consultant
+67,13898,0.6249999999999999,2844,Jennifer Welch,Consultancy,Solutions Consultant
+68,15743,0.5411111111111112,2926,Anthony Walton,Data Engineering,Senior Software Engineer
+69,14673,0.6058333333333333,3308,Tina Lutz,Data Engineering,Solutions Architect
+70,13128,0.35500000000000004,3137,Mark King,Full-Stack,Intern
+71,16464,0.7933333333333333,3300,Mr. Jack Holland,Consultancy,Principal Architect
+72,15198,0.5750000000000001,3352,Steven Smith,Full-Stack,Solutions Consultant
+73,12994,0.5441666666666667,2687,Kenneth Hernandez,Full-Stack,Solutions Enabler
+74,13000,0.5344444444444445,2462,Elizabeth Henderson,Consultancy,Principal Architect
+78,15120,0.5233333333333333,3087,Rhonda Lopez,Devops,Solutions Architect
+79,12615,0.5033333333333334,2617,Jennifer Glass,Devops,Intern
+80,17192,0.5572222222222222,3342,Amanda Mitchell,Data Science,Project Manager
+81,14559,0.7716666666666667,3295,Christine Choi,Data Engineering,Principal Architect
+82,14138,0.37666666666666665,3031,Cassandra Russell,Data Engineering,Project Manager
+83,14407,0.8166666666666667,3206,Andrea Dominguez,Data Science,Principal Architect
+84,14029,0.685,2755,Dorothy Bell,Data Engineering,Principal Architect
+85,13281,0.7333333333333333,2854,Shannon Bright,Consultancy,Project Manager
+88,12676,0.39333333333333337,2925,Sara Delgado,Testing,Principal Architect
+89,15350,0.3561111111111111,2907,Heather Simon,Data Science,Senior Software Engineer
+90,14527,0.89,3240,Holly Hill,Consultancy,Solutions Architect
+92,16756,0.499,3275,Daniel White,Devops,Solutions Consultant
+93,12958,0.625,3051,Patrick Stephens,Data Engineering,Senior Software Engineer
+94,13012,0.3229166666666667,3052,Derek Gill,Devops,Intern
+95,13540,0.4379166666666667,2694,William Mclaughlin,Devops,Senior Software Engineer
+96,13310,0.6325000000000001,2788,Morgan Wilson,Data Engineering,Project Manager
+98,15966,0.5405555555555556,2896,Benjamin Wallace,Data Engineering,Senior Software Engineer
+99,13206,0.5558333333333334,2657,Darrell Phillips,Full-Stack,Senior Software Engineer
+100,15902,0.4627777777777778,3135,Kimberly Melton,Devops,Project Manager
+101,12194,0.5041666666666667,2607,George Edwards,Full-Stack,Software Engineer
+102,14438,0.5700000000000001,2858,Jennifer Dennis,Data Engineering,Intern
+103,13124,0.8183333333333332,3075,Ryan Cox,Data Engineering,Software Engineer
+104,15890,0.5443333333333333,3522,Jared Burns,Devops,Principal Architect
+105,14224,0.5444444444444444,3056,Michele Marquez,Consultancy,Solutions Enabler
+106,14741,0.44333333333333336,2903,Jason Thomas,Full-Stack,Intern
+107,13336,0.6400000000000001,2904,Stephanie Moore,Testing,Solutions Enabler
+108,14030,0.7166666666666667,3015,Jennifer Brown,Data Science,Senior Software Engineer
+109,15386,0.5716666666666668,3511,Jordan Rios,Full-Stack,Senior Software Engineer
+110,13061,0.1366666666666667,2527,Alexander Wilson,Testing,Principal Architect
+111,15334,0.41600000000000004,3520,Brian Morales,Consultancy,Intern
+112,12610,0.5372222222222223,3124,Amy Parks,Full-Stack,Solutions Enabler
+113,14194,0.395,3190,Kayla Berry,Full-Stack,Principal Architect
+114,12324,0.7641666666666667,3181,Kathleen Walsh,Full-Stack,Solutions Architect
+117,13869,0.525,2719,Chris Ford,Data Science,Intern
+118,13791,0.3766666666666667,3028,Jordan Daniels,Data Engineering,Solutions Consultant
+119,13831,0.265,2911,Nicole Gomez,Devops,Solutions Architect
+120,13810,0.5449999999999999,2457,Michael Smith,Data Science,Intern
+121,15085,0.4716666666666667,2684,Yvette Moon,Devops,Solutions Architect
+123,13382,0.5216666666666667,2765,David Acosta,Full-Stack,Solutions Architect
+124,13895,0.39666666666666667,2720,Amanda Atkinson,Data Science,Solutions Enabler
+125,11986,0.6025,2630,Amy Martinez,Consultancy,Principal Architect
+126,12005,0.15500000000000003,2846,Eric Lewis,Consultancy,Project Manager
+127,12894,0.5441666666666666,3076,Wendy Miller,Data Engineering,Principal Architect
+128,15308,0.39458333333333334,2970,Jacob Weiss,Data Science,Solutions Enabler
+129,14016,0.8716666666666667,2906,Angela Sheppard,Consultancy,Intern
+130,11150,0.7216666666666667,2336,Isaac Christian,Data Engineering,Software Engineer
+131,14370,0.63,2953,Andrew Macias,Devops,Software Engineer
+133,15090,0.3705555555555556,3275,Emma Maldonado,Data Science,Senior Software Engineer
+134,14756,0.6766666666666667,3365,Valerie Pham,Full-Stack,Senior Software Engineer
+135,14454,0.6466666666666667,2920,Laurie Harrison,Testing,Senior Software Engineer
+136,12786,0.5883333333333334,3000,William Jones,Data Engineering,Solutions Consultant
+138,13989,0.3516666666666667,2932,Mr. Earl Garcia,Devops,Principal Architect
+139,13447,0.4177777777777778,3082,Sandra Zamora,Consultancy,Solutions Architect
+140,14602,0.4083333333333333,3308,Christopher Jackson,Testing,Principal Architect
+141,14008,0.5511111111111111,2809,Erin Walsh,Consultancy,Software Engineer
+142,12120,0.8316666666666667,2685,Amanda Lee,Data Science,Project Manager
+144,13926,0.6158333333333333,2983,Ashley Harris,Devops,Software Engineer
+145,15052,0.8700000000000001,3262,Julie Davis,Data Engineering,Solutions Enabler
+146,12764,0.4016666666666667,2780,April Spencer,Devops,Software Engineer
+147,14979,0.5141666666666667,3114,Elizabeth Watkins,Testing,Project Manager
+149,12953,0.27,3311,Mr. Anthony Elliott,Data Engineering,Solutions Architect
+150,15167,0.44333333333333336,3331,Courtney Boyle,Testing,Principal Architect
+151,14166,0.6483333333333334,3098,Mark Harris,Devops,Senior Software Engineer
+152,13910,0.5177777777777778,2857,Andrew Thompson,Full-Stack,Solutions Consultant
+153,13116,0.5166666666666666,2969,David Nguyen,Consultancy,Project Manager
+154,14985,0.5908333333333333,3203,Jennifer Ramirez,Testing,Principal Architect
+155,14293,0.23833333333333334,2997,Hunter Williams,Consultancy,Senior Software Engineer
+156,12110,0.5883333333333334,2704,Kim Fox,Devops,Senior Software Engineer
+157,14681,0.5141666666666667,2884,Kristie Ramirez,Full-Stack,Solutions Consultant
+158,14725,0.7274999999999999,3132,Ronald Anthony,Data Science,Solutions Architect
+160,13110,0.43833333333333335,2706,Courtney May,Data Engineering,Project Manager
+161,14518,0.29,3155,Virginia Johnson,Data Engineering,Senior Software Engineer
+162,14569,0.8408333333333333,3034,Robert Coleman,Data Science,Software Engineer
+163,12421,0.45333333333333337,2723,Brett Duncan,Testing,Software Engineer
+164,13093,0.5033333333333333,3072,Danny Blackwell,Testing,Solutions Consultant
+165,13514,0.5455555555555556,2795,Daniel Thomas,Devops,Solutions Architect
+167,13849,0.28166666666666673,2733,Amy Rivera,Data Engineering,Solutions Enabler
+168,13829,0.553,2872,Brian Leonard,Consultancy,Principal Architect
+169,14717,0.475,3226,Sara Gonzales,Devops,Intern
+171,16030,0.38166666666666665,2916,Daniel Porter,Data Engineering,Solutions Consultant
+172,14506,0.5716666666666667,2973,James Smith,Data Engineering,Project Manager
+173,14040,0.6086666666666667,2730,Kara Hart,Consultancy,Intern
+174,14010,0.31500000000000006,2516,Lauren Briggs,Testing,Software Engineer
+175,13193,0.6594444444444445,2645,Justin Lee,Full-Stack,Intern
+176,11515,0.48624999999999996,2430,Nathan Patel,Data Engineering,Principal Architect
+177,15337,0.5294444444444445,3037,Kevin Barber,Data Science,Solutions Enabler
+178,12907,0.44375,2509,Donna Brown,Consultancy,Principal Architect
+179,13734,0.38083333333333336,3097,Mrs. Annette Cross,Testing,Principal Architect
+180,14464,0.29055555555555557,3257,Courtney Griffin,Full-Stack,Solutions Enabler
+181,14614,0.44833333333333336,3385,Courtney Morales,Devops,Software Engineer
+182,16226,0.6300000000000001,3300,Heidi Blair,Data Engineering,Intern
+183,13684,0.38333333333333336,2967,Lisa Martinez,Data Engineering,Solutions Consultant
+184,15088,0.5158333333333334,3116,Rhonda Martin,Testing,Software Engineer
+185,13937,0.6941666666666667,3123,Randy Edwards,Data Science,Intern
+186,14025,0.5755555555555555,3036,Kim Moore,Testing,Project Manager
+187,16176,0.67375,3348,Michael Blake,Devops,Principal Architect
+188,16309,0.5750000000000001,3302,Julie Davis,Full-Stack,Solutions Enabler
+189,12477,0.7283333333333333,2714,Katrina James,Data Science,Principal Architect
+190,14094,0.44333333333333336,3019,Dr. Robert Adams,Testing,Intern
+193,13503,0.5533333333333333,2853,Michele Marsh,Data Engineering,Solutions Architect
+194,15411,0.6666666666666666,2938,Frank Nguyen,Full-Stack,Principal Architect
+195,13744,0.7100000000000001,2714,Jessica Kelly,Data Science,Principal Architect
+197,13268,0.5233333333333334,3016,Joshua Willis,Consultancy,Solutions Enabler
+198,13416,0.5679166666666667,2735,Andrew Liu,Full-Stack,Senior Software Engineer
+199,14022,0.5758333333333333,2519,Darlene Lewis,Data Science,Solutions Consultant
